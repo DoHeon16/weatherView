@@ -1,3 +1,3 @@
 package com.example.weatherview
 
-data class Weather(var basedate:String,var temperature:String,var humidity:String, var rainfall:String, var x:String, var y:String)
+data class Weather(var place:String,var temperature:String,var humidity:String, var rainfall:String, var x:String, var y:String)

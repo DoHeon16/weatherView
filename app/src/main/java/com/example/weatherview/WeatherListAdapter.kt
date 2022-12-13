@@ -27,12 +27,10 @@ class WeatherListAdapter(val weatherList:List<Weather>)
         }
 
         fun bind(weather: Weather){
-            if(weather.x=="59"&&weather.y=="125"){
-                place.text="동작구"
-                temp.text=weather.temperature
-                humi.text=weather.humidity
-                rain.text=weather.rainfall
-            }
+            place.text=weather.place
+            temp.text=weather.temperature
+            humi.text=weather.humidity
+            rain.text=weather.rainfall
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
