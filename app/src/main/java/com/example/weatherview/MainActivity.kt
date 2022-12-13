@@ -19,8 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     fun init(){
         val memo=findViewById<TextView>(R.id.sampleSentence)
-
-
         val btn=findViewById<Button>(R.id.button)
 
         btn.setOnClickListener {
@@ -29,4 +27,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(i)
         }
     }
+
+
 }
