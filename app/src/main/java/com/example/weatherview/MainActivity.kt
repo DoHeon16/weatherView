@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.*
@@ -23,12 +24,14 @@ class MainActivity : AppCompatActivity() {
     fun init(){
         val nickname=findViewById<TextView>(R.id.sampleSentence)
         val nicknameText=findViewById<EditText>(R.id.nickname)
+        val image=findViewById<ImageView>(R.id.face)
         val btn1=findViewById<Button>(R.id.changebtn)
 
         val btn2=findViewById<Button>(R.id.searchbtn)
 
         btn1.setOnClickListener {
             nickname.text=nicknameText.text.toString()
+            image.setImageResource(R.drawable.ic_baseline_sentiment_satisfied_alt_24)
         }
 
         btn2.setOnClickListener {
