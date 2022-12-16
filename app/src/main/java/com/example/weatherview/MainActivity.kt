@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val sampleObject=SampleCode()
-        sampleObject.samplefun()
+        //val sampleObject=SampleCode()
+        //sampleObject.samplefun()
 
         init()
     }
@@ -25,9 +25,10 @@ class MainActivity : AppCompatActivity() {
         val nickname=findViewById<TextView>(R.id.sampleSentence)
         val nicknameText=findViewById<EditText>(R.id.nickname)
         val image=findViewById<ImageView>(R.id.face)
-        val btn1=findViewById<Button>(R.id.changebtn)
 
         val btn2=findViewById<Button>(R.id.searchbtn)
+
+        val btn1=findViewById<Button>(R.id.changebtn)
 
         btn1.setOnClickListener {
             nickname.text=nicknameText.text.toString()
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         btn2.setOnClickListener {
             val i=Intent(this,DataActivity::class.java)
             i.putExtra("today",getDate())
+            i.putExtra("nickname",nickname.text.toString())
             startActivity(i)
         }
     }

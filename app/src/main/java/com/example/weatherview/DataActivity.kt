@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,12 +30,19 @@ class DataActivity : AppCompatActivity() {
     var weatherList= mutableListOf<Weather>()
     var coordiList= mutableListOf<Coordinates>()
     lateinit var date:String
+    lateinit var nickname:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data)
 
         date= intent.getStringExtra("today").toString()
+        nickname=intent.getStringExtra("nickname").toString()
+
+        Toast.makeText(this,"$nickname 님 환영합니다.",Toast.LENGTH_SHORT).show()
+        //val t=Toast.makeText(this,"Hello World!",Toast.LENGTH_SHORT)
+        //t.show()
+
         val title=findViewById<TextView>(R.id.title)
         title.text=date
         init()
@@ -71,17 +79,17 @@ class DataActivity : AppCompatActivity() {
         }
     }
 
-    suspend fun connectAPI(coordinates: List<Coordinates>){
+    private suspend fun connectAPI(coordinates: List<Coordinates>){
         //coroutine 사용
         //CoroutineScope(Dispatchers.Main).launch {
            val job= CoroutineScope(Dispatchers.IO).async {
-                for(i in 0..coordinates.size-1){
+                for(i in coordinates.indices){
                     val urlBuilder = StringBuilder("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst") /*URL*/ //초단기 실황 조회
                     urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8").toString() + "="+serviceKey)/*Service Key-decoding*/
                     urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8").toString() + "=" + URLEncoder.encode("1", "UTF-8")) /*페이지번호*/
                     urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8").toString() + "=" + URLEncoder.encode("1000", "UTF-8")) /*한 페이지 결과 수*/
                     urlBuilder.append("&" + URLEncoder.encode("dataType", "UTF-8").toString() + "=" + URLEncoder.encode("JSON", "UTF-8")) /*요청자료형식(XML/JSON) Default: XML*/
-                    urlBuilder.append("&" + URLEncoder.encode("base_date", "UTF-8").toString() + "=" + URLEncoder.encode(date, "UTF-8")) /*최근 3일만 정보 지원*/
+                    urlBuilder.append("&" + URLEncoder.encode("base_date", "UTF-8").toString() + "=" + URLEncoder.encode(date, "UTF-8")) /*최근 1일만 정보 지원*/
                     urlBuilder.append("&" + URLEncoder.encode("base_time", "UTF-8").toString() + "=" + URLEncoder.encode("0600", "UTF-8")) /*06시 발표(정시단위) */
                     urlBuilder.append("&" + URLEncoder.encode("nx", "UTF-8").toString() + "=" + URLEncoder.encode(coordinates[i].x, "UTF-8")) /*예보지점의 X 좌표값*/
                     urlBuilder.append("&" + URLEncoder.encode("ny", "UTF-8").toString() + "=" + URLEncoder.encode(coordinates[i].y, "UTF-8")) /*예보지점의 Y 좌표값*/

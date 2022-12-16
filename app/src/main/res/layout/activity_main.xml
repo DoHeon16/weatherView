@@ -64,4 +64,5 @@
             android:layout_gravity="center"
             android:layout_marginVertical="20dp"
             android:text="search" />
+
 </LinearLayout>
