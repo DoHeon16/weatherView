@@ -1,5 +1,11 @@
 package com.example.weatherview
 
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+
 class SampleCode {
 
     var a:Int=7
@@ -111,3 +117,26 @@ class SampleCode {
         println("y=${seoul.y}")
     }
 }
+
+//class myAdapter(var item:ArrayList<String>):RecyclerView.Adapter<myAdapter.ViewHolder>(){
+//    inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(){
+//        var textView:TextView
+//        init {
+//            textView=itemView.findViewById(R.id.place)
+//        }
+//    }
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myAdapter.ViewHolder {
+//        val v = LayoutInflater.from(parent.context).inflate(R.layout.weatherbox,parent,false)
+//        return ViewHolder(v)
+//    }
+//
+//    override fun onBindViewHolder(holder: myAdapter.ViewHolder, position: Int) {
+//        holder.textView.text=item.get(position)
+//    }
+//
+//    override fun getItemCount(): Int {
+//        return item.size
+//    }
+//
+//}

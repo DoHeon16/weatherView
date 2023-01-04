@@ -3,10 +3,7 @@ package com.example.weatherview
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -15,8 +12,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //val sampleObject=SampleCode()
-        //sampleObject.samplefun()
+        val sampleObject=SampleCode()
+        sampleObject.samplefun()
 
         init()
     }
@@ -36,10 +33,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn2.setOnClickListener {
-            val i=Intent(this,DataActivity::class.java)
-            i.putExtra("today",getDate())
-            i.putExtra("nickname",nickname.text.toString())
-            startActivity(i)
+            Toast.makeText(this, "안녕하세요",Toast.LENGTH_SHORT).show()
+//            val i=Intent(this,DataActivity::class.java)
+//            i.putExtra("today",getDate())
+//            i.putExtra("nickname",nickname.text.toString())
+//            startActivity(i)
         }
     }
 
